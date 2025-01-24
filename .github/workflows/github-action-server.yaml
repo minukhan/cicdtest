@@ -24,7 +24,7 @@ jobs:
 
       - name: Make application.yaml
         run: |
-          cd ./marketplace/src/main
+          cd ./dtostudy/src/main
           mkdir -p resources
           cd resources
           touch application.yaml
@@ -46,18 +46,18 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: |
-          cd ./marketplace
+          cd ./dtostudy
           chmod +x gradlew
 
       - name: Build with Gradle
         run: |
-          cd ./marketplace/
+          cd ./dtostudy/
           ./gradlew clean build -x test
 
       # Dockerfile을 통해 이미지를 빌드하고, 이를 Docker repo로 push
       - name: Docker build & push to Docker repo
         run: |
-          cd ./marketplace/
+          cd ./dtostudy/
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker build --build-arg DEPENDENCY=build/dependency -t ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }} --platform linux/amd64 .
           docker push ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }}
@@ -73,9 +73,9 @@ jobs:
             echo ${{ secrets.DOCKER_PASSWORD }} | sudo docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
             sudo docker pull ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }}:latest
             # 기존에 실행 중인 컨테이너 중지 및 삭제
-            if [ $(sudo docker ps -q -f "name=marketplace-server") ]; then
-              sudo docker stop marketplace-server
-              sudo docker rm -f marketplace-server
+            if [ $(sudo docker ps -q -f "name=dtostudy-server") ]; then
+              sudo docker stop dtostudy-server
+              sudo docker rm -f dtostudy-server
             fi
             # 새로운 컨테이너 실행
-            sudo docker run -d -p 8080:8080 --name marketplace-server ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }}:latest
+            sudo docker run -d -p 8080:8080 --name dtostudy-server ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }}:latest
