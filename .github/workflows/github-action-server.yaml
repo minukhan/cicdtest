@@ -55,7 +55,7 @@ jobs:
           ./gradlew clean build -x test
 
       # Dockerfile을 통해 이미지를 빌드하고, 이를 Docker repo로   push
-      - name: Docker build & push to Docker repo
+      - name: Docker build & push to Docker repotatu
         run: |
           cd ./
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
@@ -71,11 +71,11 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           script: |
             echo ${{ secrets.DOCKER_PASSWORD }} | sudo docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-            sudo docker pull ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }}:latest
+            sudo docker pull "hanminwook/study:latest"
             # 기존에 실행 중인 컨테이너 중지 및 삭제
             if [ $(sudo docker ps -q -f "name=dtostudy-server") ]; then
               sudo docker stop dtostudy-server
               sudo docker rm -f dtostudy-server
             fi
             # 새로운 컨테이너 실행
-            sudo docker run -d -p 8080:8080 --name dtostudy-server ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }}:latest
+            sudo docker run -d -p 8080:8080 --name dtostudy-server "hanminwook/study:latest"
