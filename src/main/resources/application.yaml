@@ -1,0 +1,22 @@
+#spring:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/minwook?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+#    username: root
+#    password: 1234
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://dbtest.cbe4uqqcsoit.us-east-1.rds.amazonaws.com:3306/minwook?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    username: admin
+    password: 7722p100
+  jpa:
+    hibernate:
+      ddl-auto: update # create, create-drop, update, validate 중 선택
+    show-sql: true      # Hibernate가 실행하는 SQL을 출력
+    properties:
+      hibernate:
+        format_sql: true # SQL을 포맷팅해서 보기 좋게 출력
+
+server:
+  port: 9000 # 애플리케이션이 실행될 포트
