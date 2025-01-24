@@ -54,7 +54,7 @@ jobs:
           cd ./
           ./gradlew clean build -x test
 
-      # Dockerfile을 통해 이미지를 빌드하고, 이를 Docker repo로  push
+      # Dockerfile을 통해 이미지를 빌드하고, 이를 Docker repo로   push
       - name: Docker build & push to Docker repo
         run: |
           cd ./
