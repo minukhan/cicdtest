@@ -31,7 +31,7 @@ jobs:
           echo "${{ secrets.YAML }}" > application.yaml
         shell: bash
 #
-#      - name: Create Marketplace JSON file
+#      - name: Create Marketplace JSON  file
 #        run: |
 #          mkdir -p ./marketplace/src/main/resources/firebase
 #        shell: bash
