@@ -9,7 +9,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://dbtest.cbe4uqqcsoit.us-east-1.rds.amazonaws.com:3306/minwook?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
     username: admin
-    password: 7722p100
+    password:
   jpa:
     hibernate:
       ddl-auto: update # create, create-drop, update, validate 중 선택
@@ -19,4 +19,4 @@ spring:
         format_sql: true # SQL을 포맷팅해서 보기 좋게 출력
 
 server:
-  port: 9000 # 애플리케이션이 실행될 포트
+  port: 9000 # 애플리 케이션이 실행될 포트
