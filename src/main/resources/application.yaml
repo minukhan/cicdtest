@@ -9,7 +9,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://dbtest.cbe4uqqcsoit.us-east-1.rds.amazonaws.com:3306/minwook?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
     username: admin
-    password:
+    password: 7722p100
   jpa:
     hibernate:
       ddl-auto: update # create, create-drop, update, validate 중 선택
