@@ -12,7 +12,7 @@ spring:
     password: 7722p100
   jpa:
     hibernate:
-      ddl-auto: update # create, create-drop, update, validate 중 선택
+      ddl-auto: update # create,  create-drop, update, validate 중 선택
     show-sql: true      # Hibernate가 실행하는 SQL을 출력
     properties:
       hibernate:
